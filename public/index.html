@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrowTwitter — Entre e comece a miar!</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #7C3AED 0%, #A855F7 60%, #C084FC 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .gato-decorativo:nth-child(1) {
+            top: 5%;
+            left: 3%;
+            transform: rotate(-15deg);
+        }
+
+        .gato-decorativo:nth-child(2) {
+            top: 15%;
+            right: 5%;
+            transform: rotate(10deg);
+        }
+
+        .gato-decorativo:nth-child(3) {
+            bottom: 10%;
+            left: 8%;
+            transform: rotate(20deg);
+        }
+
+        .gato-decorativo:nth-child(4) {
+            bottom: 20%;
+            right: 3%;
+            transform: rotate(-10deg);
+        }
+
+        .logo-area {
+            text-align: center;
+            margin-bottom: 24px;
+            z-index: 1;
+        }
+
+        .logo-icone {
+            width: 72px;
+            height: 72px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 38px;
+            margin: 0 auto 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo-area h1 {
+            color: white;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .logo-area p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 440px;
+            z-index: 1;
+        }
+
+        .card h2 {
+            text-align: center;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--texto-principal);
+        }
+
+        .campo-grupo {
+            margin-bottom: 16px;
+        }
+
+        .campo-grupo label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: var(--texto-principal);
+        }
+
+        .esqueceu {
+            text-align: left;
+            margin-top: 6px;
+        }
+
+        .esqueceu a {
+            font-size: 13px;
+            color: var(--roxo-principal);
+            text-decoration: none;
+        }
+
+        .divisor {
+            text-align: center;
+            margin: 20px 0;
+            color: var(--texto-secundario);
+            font-size: 14px;
+        }
+
+        .rodape {
+            margin-top: 20px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 12px;
+            z-index: 1;
+        }
+
+        .rodape a {
+            color: white;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="gatos-fundo">
+        <div class="gato-decorativo">🐱</div>
+        <div class="gato-decorativo">😻</div>
+        <div class="gato-decorativo">🐈</div>
+        <div class="gato-decorativo">🐾</div>
+    </div>
+
+    <div class="logo-area">
+        <div class="logo-icone">🐱</div>
+        <h1>GrowTwitter</h1>
+        <p>A rede social mais legal 🐱</p>
+    </div>
+
+    <div class="card">
+        <h2>Entre e comece a miar!</h2>
+
+        <div class="campo-grupo">
+            <label>Email ou @usuario</label>
+            <input class="input-campo" type="text" id="login" placeholder="seuemail@exemplo.com">
+        </div>
+
+        <div class="campo-grupo">
+            <label>Senha</label>
+            <input class="input-campo" type="password" id="senha" placeholder="••••••••">
+            <div class="esqueceu"><a href="#">Esqueceu sua senha?</a></div>
+        </div>
+
+        <div id="erro" class="erro-msg"></div>
+
+        <br>
+        <button class="btn-principal" onclick="fazerLogin()">Entrar 🐱</button>
+
+        <div class="divisor">Ainda não tem uma conta?</div>
+        <button class="btn-secundario" onclick="window.location.href='cadastro.html'">Criar conta 🐾</button>
+    </div>
+
+    <div class="rodape">
+        Ao continuar, você concorda com nossos <a href="#">Termos de Serviço</a> e <a href="#">Política de
+            Privacidade</a>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/login.js"></script>
+</body>
+
+</html>

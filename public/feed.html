@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrowTwitter — Feed</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background: #F3E8FF;
+        }
+
+        .navbar {
+            background: white;
+            border-bottom: 1px solid var(--borda);
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(124, 58, 237, 0.06);
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--roxo-principal);
+        }
+
+        .navbar-logo span {
+            font-size: 28px;
+        }
+
+        .navbar-sub {
+            font-size: 13px;
+            color: var(--texto-secundario);
+            font-weight: 400;
+        }
+
+        .navbar-acoes {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .navbar-acoes a {
+            text-decoration: none;
+            color: var(--texto-principal);
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .avatar-nav {
+            width: 38px;
+            height: 38px;
+            background: var(--roxo-principal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 24px 16px;
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 24px;
+        }
+
+        .coluna-feed {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .box-tweet {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 2px 12px rgba(124, 58, 237, 0.06);
+        }
+
+        .box-tweet-topo {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .avatar-mini {
+            width: 44px;
+            height: 44px;
+            background: var(--roxo-principal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        textarea#conteudo-tweet {
+            width: 100%;
+            border: none;
+            outline: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            resize: none;
+            color: var(--texto-principal);
+            background: transparent;
+            min-height: 60px;
+        }
+
+        textarea#conteudo-tweet::placeholder {
+            color: #9ca3af;
+        }
+
+        .box-tweet-rodape {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid var(--borda);
+            padding-top: 12px;
+            margin-top: 8px;
+        }
+
+        .tweet-acoes-icons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .tweet-acoes-icons span {
+            font-size: 22px;
+            cursor: pointer;
+            opacity: 0.7;
+        }
+
+        .tweet-acoes-icons span:hover {
+            opacity: 1;
+        }
+
+        .contador-chars {
+            font-size: 13px;
+            color: var(--texto-secundario);
+        }
+
+        .btn-miar {
+            background: var(--roxo-principal);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 8px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-miar:hover {
+            background: var(--roxo-hover);
+        }
+
+        .card-tweet {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 2px 12px rgba(124, 58, 237, 0.06);
+        }
+
+        .tweet-header {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .tweet-info {
+            flex: 1;
+        }
+
+        .tweet-info-topo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tweet-nome {
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .tweet-nome:hover {
+            text-decoration: underline;
+            color: var(--roxo-principal);
+        }
+
+        .tweet-username {
+            color: var(--texto-secundario);
+            font-size: 14px;
+        }
+
+        .tweet-tempo {
+            color: var(--texto-secundario);
+            font-size: 13px;
+        }
+
+        .tweet-conteudo {
+            font-size: 15px;
+            line-height: 1.5;
+            color: var(--texto-principal);
+            margin-bottom: 14px;
+        }
+
+        .tweet-interacoes {
+            display: flex;
+            gap: 24px;
+        }
+
+        .interacao-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            color: var(--texto-secundario);
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .interacao-btn:hover {
+            background: var(--roxo-fundo);
+            color: var(--roxo-principal);
+        }
+
+        .interacao-btn.liked {
+            color: var(--like);
+        }
+
+        .interacao-btn span {
+            font-size: 18px;
+        }
+
+        .coluna-lateral {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .box-lateral {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 2px 12px rgba(124, 58, 237, 0.06);
+        }
+
+        .box-lateral h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .tendencia {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--borda);
+            cursor: pointer;
+        }
+
+        .tendencia:last-child {
+            border-bottom: none;
+        }
+
+        .tendencia-tag {
+            font-weight: 600;
+            color: var(--roxo-principal);
+            font-size: 15px;
+        }
+
+        .tendencia-count {
+            font-size: 12px;
+            color: var(--texto-secundario);
+            margin-top: 2px;
+        }
+
+        .sugestao-usuario {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .sugestao-info {
+            flex: 1;
+        }
+
+        .sugestao-nome {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .sugestao-username {
+            font-size: 12px;
+            color: var(--texto-secundario);
+        }
+
+        .btn-seguir {
+            background: var(--roxo-principal);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 6px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-seguir:hover {
+            background: var(--roxo-hover);
+        }
+
+        .btn-seguir.seguindo {
+            background: transparent;
+            color: var(--roxo-principal);
+            border: 2px solid var(--roxo-principal);
+        }
+
+        .box-banner {
+            background: var(--roxo-principal);
+            border-radius: 16px;
+            padding: 20px;
+            color: white;
+        }
+
+        .box-banner h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin: 8px 0;
+        }
+
+        .box-banner p {
+            font-size: 13px;
+            opacity: 0.9;
+            margin-bottom: 14px;
+        }
+
+        .btn-banner {
+            background: white;
+            color: var(--roxo-principal);
+            border: none;
+            border-radius: 50px;
+            padding: 8px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .fab {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            width: 56px;
+            height: 56px;
+            background: var(--roxo-principal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(124, 58, 237, 0.4);
+            transition: background 0.2s;
+        }
+
+        .fab:hover {
+            background: var(--roxo-hover);
+        }
+
+        .feed-vazio {
+            text-align: center;
+            padding: 40px;
+            color: var(--texto-secundario);
+            font-size: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <span>🐱</span>
+            GrowTwitter
+            <span class="navbar-sub" style="font-size:11px;">a rede social mais legal 🐱</span>
+        </div>
+        <div class="navbar-acoes">
+            <a href="feed.html">🏠 Início</a>
+            <div class="avatar-nav" onclick="irParaPerfil()">🐱</div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="coluna-feed">
+            <div class="box-tweet">
+                <div class="box-tweet-topo">
+                    <div class="avatar-mini">🐱</div>
+                    <textarea id="conteudo-tweet" placeholder="Escreva seus miaumentos... 🐾" maxlength="280"
+                        oninput="atualizarContador()"></textarea>
+                </div>
+                <div class="box-tweet-rodape">
+                    <div class="tweet-acoes-icons">
+                        <span title="Imagem">🖼️</span>
+                        <span title="Gif">🐱</span>
+                        <span title="Emoji">🐾</span>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:12px;">
+                        <span class="contador-chars" id="contador">0/280</span>
+                        <button class="btn-miar" onclick="publicarTweet()">Miar! 🐱</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="lista-tweets">
+                <div class="feed-vazio">Carregando miaumentos... 🐾</div>
+            </div>
+        </div>
+
+        <div class="coluna-lateral">
+            <div class="box-lateral">
+                <h3>Tendências Felinas 🐾</h3>
+                <div class="tendencia">
+                    <div class="tendencia-tag">#GatinhosForam</div>
+                    <div class="tendencia-count">15.2K miaumentos</div>
+                </div>
+                <div class="tendencia">
+                    <div class="tendencia-tag">#RonronandoPorAí</div>
+                    <div class="tendencia-count">8.9K miaumentos</div>
+                </div>
+                <div class="tendencia">
+                    <div class="tendencia-tag">#FelinosUnidos</div>
+                    <div class="tendencia-count">12.4K miaumentos</div>
+                </div>
+                <div class="tendencia">
+                    <div class="tendencia-tag">#MiauMiau

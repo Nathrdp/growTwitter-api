@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrowTwitter — Junte-se ao bando!</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #7C3AED 0%, #A855F7 60%, #C084FC 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .gato-decorativo:nth-child(1) {
+            top: 8%;
+            left: 4%;
+            transform: rotate(-15deg);
+        }
+
+        .gato-decorativo:nth-child(2) {
+            top: 20%;
+            right: 4%;
+            transform: rotate(10deg);
+        }
+
+        .gato-decorativo:nth-child(3) {
+            bottom: 12%;
+            left: 6%;
+            transform: rotate(20deg);
+        }
+
+        .gato-decorativo:nth-child(4) {
+            bottom: 25%;
+            right: 5%;
+            transform: rotate(-10deg);
+        }
+
+        .logo-area {
+            text-align: center;
+            margin-bottom: 20px;
+            z-index: 1;
+        }
+
+        .logo-icone {
+            width: 72px;
+            height: 72px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 38px;
+            margin: 0 auto 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo-area h1 {
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .logo-area p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 14px;
+            margin-top: 2px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 440px;
+            z-index: 1;
+        }
+
+        .card h2 {
+            text-align: center;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .campo-grupo {
+            margin-bottom: 14px;
+        }
+
+        .campo-grupo label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+
+        .hint {
+            font-size: 11px;
+            color: var(--roxo-principal);
+            padding-left: 12px;
+            margin-top: 4px;
+        }
+
+        .ja-tem {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 14px;
+            color: var(--texto-secundario);
+        }
+
+        .rodape {
+            margin-top: 20px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 12px;
+            z-index: 1;
+        }
+
+        .rodape a {
+            color: white;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="gatos-fundo">
+        <div class="gato-decorativo">😺</div>
+        <div class="gato-decorativo">😻</div>
+        <div class="gato-decorativo">🐾</div>
+        <div class="gato-decorativo">🐱</div>
+    </div>
+
+    <div class="logo-area">
+        <div class="logo-icone">🐱</div>
+        <h1>Junte-se ao bando!</h1>
+        <p>Crie sua conta e comece a ronronar 🐾</p>
+    </div>
+
+    <div class="card">
+        <h2>Cadastro</h2>
+
+        <div class="campo-grupo">
+            <label>Nome completo</label>
+            <input class="input-campo" type="text" id="nome" placeholder="Seu nome gatuno">
+        </div>
+
+        <div class="campo-grupo">
+            <label>Email</label>
+            <input class="input-campo" type="email" id="email" placeholder="seuemail@exemplo.com">
+        </div>
+
+        <div class="campo-grupo">
+            <label>Nome de usuário</label>
+            <input class="input-campo" type="text" id="username" placeholder="@meugato">
+        </div>
+
+        <div class="campo-grupo">
+            <label>Senha</label>
+            <input class="input-campo" type="password" id="senha" placeholder="••••••••">
+            <div class="hint">Mínimo 8 caracteres</div>
+        </div>
+
+        <div id="erro" class="erro-msg"></div>
+        <div id="sucesso" class="sucesso-msg"></div>
+
+        <br>
+        <button class="btn-principal" onclick="fazerCadastro()">Criar conta e miar! 🐱</button>
+
+        <div class="ja-tem">
+            Já tem uma conta? <a class="link-roxo" href="index.html">Entrar</a>
+        </div>
+    </div>
+
+    <div class="rodape">
+        Ao criar uma conta, você concorda com nossos <a href="#">Termos de Serviço</a> e <a href="#">Política de
+            Privacidade</a>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/cadastro.js"></script>
+</body>
+
+</html>
