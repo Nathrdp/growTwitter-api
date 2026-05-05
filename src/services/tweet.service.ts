@@ -25,7 +25,7 @@ export class TweetService {
             select: { followingId: true },
         });
 
-        const followingIds = following.map((f) => f.followingId);
+        const followingIds = following.map((f: { followingId: string }) => f.followingId);
 
         return await prisma.tweet.findMany({
             where: {
