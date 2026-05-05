@@ -1,6 +1,6 @@
 # 🐱 GrowTwitter API
 
-Uma rede social estilo Twitter desenvolvida como projeto de conclusão do curso Full Stack II da Growdev.
+Uma rede social estilo Twitter (só que de gatinhos) desenvolvida como projeto de conclusão do curso de Node.js da Growdev.
 
 ## 🚀 Deploy
 
